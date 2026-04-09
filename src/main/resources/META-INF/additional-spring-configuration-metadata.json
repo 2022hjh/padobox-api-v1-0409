@@ -1,0 +1,152 @@
+{"properties": [
+  {
+    "name": "padobox.connect_type",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.connect_type'"
+  },
+  {
+    "name": "padobox.kakao_send_yn",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.kakao_send_yn'"
+  },
+  {
+    "name": "padobox.kakao_patner_send_yn",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.kakao_patner_send_yn'"
+  },
+  {
+    "name": "padobox.rest_version",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.rest_version'"
+  },
+  {
+    "name": "padobox.header_rest_api",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.header_rest_api'"
+  },
+  {
+    "name": "padobox.header_session_token_dev",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.header_session_token_dev'"
+  },
+  {
+    "name": "padobox.header_session_token_prod",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.header_session_token_prod'"
+  },
+  {
+    "name": "padobox.moimapi_url_stage",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.moimapi_url_stage'"
+  },
+  {
+    "name": "padobox.moimapi_auth_stage",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.moimapi_auth_stage'"
+  },
+  {
+    "name": "padobox.moimapi_url_prod",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.moimapi_url_prod'"
+  },
+  {
+    "name": "padobox.moimapi_auth_prod",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.moimapi_auth_prod'"
+  },
+  {
+    "name": "padobox.padobox_jwt_secret_dev",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.padobox_jwt_secret_dev'"
+  },
+  {
+    "name": "padobox.padobox_jwt_secret_prod",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.padobox_jwt_secret_prod'"
+  },
+  {
+    "name": "padobox.moim_api_order_list_limit",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.moim_api_order_list_limit'"
+  },
+  {
+    "name": "padobox.moim_api_sellerid_list_limit",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.moim_api_sellerid_list_limit'"
+  },
+  {
+    "name": "padobox.list_limit",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.list_limit'"
+  },
+  {
+    "name": "padobox.account_list_limit",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.account_list_limit'"
+  },
+  {
+    "name": "padobox.group_id_stage",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.group_id_stage'"
+  },
+  {
+    "name": "padobox.group_id_prod",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.group_id_prod'"
+  },
+  {
+    "name": "padobox.top_sellerid_stage",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.top_sellerid_stage'"
+  },
+  {
+    "name": "padobox.top_sellerid_prod",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.top_sellerid_prod'"
+  },
+  {
+    "name": "padobox.user_info_seed",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.user_info_seed'"
+  },
+  {
+    "name": "padobox.last_idx_seed",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.last_idx_seed'"
+  },
+  {
+    "name": "padobox.kakao_rest_url",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.kakao_rest_url'"
+  },
+  {
+    "name": "padobox.kakao_userid",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.kakao_userid'"
+  },
+  {
+    "name": "padobox.kakao_profile_key",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.kakao_profile_key'"
+  },
+  {
+    "name": "padobox.fail_send_gmail_addr",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.fail_send_gmail_addr'"
+  },
+  {
+    "name": "padobox.fail_send_gmail_pw",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.fail_send_gmail_pw'"
+  },
+  {
+    "name": "padobox.fail_reciver_addr",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.fail_reciver_addr'"
+  },
+  {
+    "name": "padobox.batch_size",
+    "type": "java.lang.String",
+    "description": "A description for 'padobox.batch_size'"
+  }
+]}
