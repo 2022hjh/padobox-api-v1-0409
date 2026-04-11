@@ -37,9 +37,6 @@ public class DefaultController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * 	@return Json{message}
 	 * @desc  root 오류 리턴
 	 */
 	@GetMapping("/")
@@ -49,9 +46,6 @@ public class DefaultController {
 	}
 
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * 	@return Json{}
 	 * @desc  idx 암호화 체크
 	 */
 	@GetMapping("/idx")
@@ -71,9 +65,6 @@ public class DefaultController {
 	}
 	
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * 	@return Json{""}
 	 * @desc  sellerId > token 
 	 */
 	@GetMapping("/token")

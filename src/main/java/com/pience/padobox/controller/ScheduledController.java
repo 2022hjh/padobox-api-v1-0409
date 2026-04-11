@@ -55,11 +55,6 @@ public class ScheduledController {
 	OrderConnectService orderConnectService;
 	
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
 	 * @desc order list sync
 	 */
 	@GetMapping(value="/order-sync-all/{version}/{type}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )

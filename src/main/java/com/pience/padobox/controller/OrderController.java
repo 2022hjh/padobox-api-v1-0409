@@ -65,11 +65,6 @@ public class OrderController {
 
 	
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
 	 * @desc 새로 들어온 주문 리스트
 	 */
 	@GetMapping(value="/new-order-list/{version}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )
@@ -171,9 +166,9 @@ public class OrderController {
 		if(error_code==0) {
 			try {
 				logger.info("NewOrderList rest_version:"+rest_version);
-				if(rest_version.equals("1")==true) {
-					order_list = orderConnectService.getOrderListNewOrder(model, order_type, connect_type, seller_id, param_body);
-				}
+//				if(rest_version.equals("1")==true) {
+//					order_list = orderConnectService.getOrderListNewOrder(model, order_type, connect_type, seller_id, param_body);
+//				}
 				if(rest_version.equals("2")==true) {
 					order_list = orderConnectService.getOrderListNewOrderV2(model, order_type, connect_type, seller_id, param_body);
 				}
@@ -227,12 +222,7 @@ public class OrderController {
 	}
 	
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
-	 * @desc 새로 들어온 주문 리스트
+	 * @desc 배송 접수 중 리스트 : 현재 사용 안함. 
 	 */
 	@GetMapping(value="/receiving-delivery-order-list/{version}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )
 	public @ResponseBody Json ReceiveingDiliveryList(
@@ -385,11 +375,6 @@ public class OrderController {
 	}
 	
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
 	 * @desc 가능 주문 리스트
 	 */
 	@GetMapping(value="/possible-order-list/{version}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )
@@ -494,9 +479,10 @@ public class OrderController {
 			
 			try {
 				
-				if(rest_version.equals("1")==true) {
-					order_list = orderConnectService.getOrderListPossibleOrder(model, order_type, connect_type, seller_id, param_body);	
-				}else if(rest_version.equals("2")==true) {
+//				if(rest_version.equals("1")==true) {
+//					order_list = orderConnectService.getOrderListPossibleOrder(model, order_type, connect_type, seller_id, param_body);
+//				}
+				if(rest_version.equals("2")==true) {
 					order_list = orderConnectService.getOrderListPossibleOrderV2(model, order_type, connect_type, seller_id, param_body);
 				}
 				
@@ -549,11 +535,6 @@ public class OrderController {
 	}
 	
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
 	 * @desc 취소된 주문 리스트
 	 */
 	@GetMapping(value="/cancelled-list/{version}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )
@@ -679,9 +660,10 @@ public class OrderController {
 		if(error_code==0) {
 			try {
 				
-				if(rest_version.equals("1")==true) {
-					order_list = orderConnectService.getOrderListCancelled(model, order_type, connect_type, seller_id, param_body);	
-				}else if(rest_version.equals("2")==true) {
+//				if(rest_version.equals("1")==true) {
+//					order_list = orderConnectService.getOrderListCancelled(model, order_type, connect_type, seller_id, param_body);	
+//				} 
+				if(rest_version.equals("2")==true) {
 					order_list = orderConnectService.getOrderListCancelledV2(model, order_type, connect_type, seller_id, param_body);	
 				}
 				
@@ -734,11 +716,6 @@ public class OrderController {
 	}
 
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
 	 * @desc 발송 완료 리스트
 	 */
 	@GetMapping(value="/delivered-list/{version}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )
@@ -869,9 +846,10 @@ public class OrderController {
 		// list 
 		if(error_code==0) {
 			try {
-				if(rest_version.equals("1")==true) {
-					order_list = orderConnectService.getOrderListDeilvered(model, order_type, connect_type, seller_id, param_body);	
-				}else if(rest_version.equals("2")==true) {
+//				if(rest_version.equals("1")==true) {
+//					order_list = orderConnectService.getOrderListDeilvered(model, order_type, connect_type, seller_id, param_body);	
+//				}
+				if(rest_version.equals("2")==true) {
 					order_list = orderConnectService.getOrderListDeilveredV2(model, order_type, connect_type, seller_id, param_body);	
 				}
 				if(order_list.getError_code()>0) {
@@ -922,11 +900,6 @@ public class OrderController {
 	}
 	
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
 	 * @desc 관망중 리스트
 	 */
 	@GetMapping(value="/observ-list/{version}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )
@@ -1028,9 +1001,10 @@ public class OrderController {
 		// list 
 		if(error_code==0) {
 			try {
-				if(rest_version.equals("1")==true) {
-					order_list = orderConnectService.getObservList(model, order_type, connect_type, seller_id);
-				}else if(rest_version.equals("2")==true) {
+//				if(rest_version.equals("1")==true) {
+//					order_list = orderConnectService.getObservList(model, order_type, connect_type, seller_id);
+//				}
+				if(rest_version.equals("2")==true) {
 					order_list = orderConnectService.getObservListV2(model, order_type, connect_type, seller_id);
 				}
 				
@@ -1084,11 +1058,6 @@ public class OrderController {
 		
 		
 	/**
-	 * @method GET
-	 * @param NO DATA
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
 	 * @desc 정산서 
 	 */
 	@GetMapping(value="/accounts-list/{version}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )
@@ -1241,9 +1210,9 @@ public class OrderController {
 
 			try {
 				logger.info("AccountsList last_idx:"+param_body.getLast_idx());
-				if(rest_version.equals("1")==true) {
-					account_list = orderConnectService.getAccountsList(model, connect_type, seller_id, param_body);
-				}
+//				if(rest_version.equals("1")==true) {
+//					account_list = orderConnectService.getAccountsList(model, connect_type, seller_id, param_body);
+//				}
 				if(rest_version.equals("2")==true) {
 					account_list = orderConnectService.getAccountsListV2(model, connect_type, seller_id, param_body);	
 				}
@@ -1296,11 +1265,6 @@ public class OrderController {
 	}
 	
 	/**
-	 * @method POST
-	 * @param NO DATA
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
 	 * @desc 상태 변경
 	 */
 	@PostMapping(value="/status-modify/{version}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )
@@ -1411,24 +1375,24 @@ public class OrderController {
 		if(error_code == 0) {
 			
 			try {
-				if(rest_version.equals("1")==true) {
-					ModifyReturnResult = orderConnectService.postStatusModify(model
-							, connect_type, seller_id, requestModifyBody, sellerid_info, seller_token);
-					
-					if(ModifyReturnResult.getError_code()>0) {
-						error_code = ModifyReturnResult.getError_code();
-						error_val = ModifyReturnResult.getError_val();
-					}
-				}
-				if(rest_version.equals("2")==true) {
-					ModifyReturnResultV2 = orderConnectService.postStatusModifyV2(model
-							, connect_type, seller_id, requestModifyBody, sellerid_info, seller_token);
-					
-					if(ModifyReturnResultV2.getError_code()>0) {
-						error_code = ModifyReturnResultV2.getError_code();
-						error_val = ModifyReturnResultV2.getError_val();
-					}
-				}
+//				if(rest_version.equals("1")==true) {
+//					ModifyReturnResult = orderConnectService.postStatusModify(model
+//							, connect_type, seller_id, requestModifyBody, sellerid_info, seller_token);
+//					
+//					if(ModifyReturnResult.getError_code()>0) {
+//						error_code = ModifyReturnResult.getError_code();
+//						error_val = ModifyReturnResult.getError_val();
+//					}
+//				}
+//				if(rest_version.equals("2")==true) {
+//					ModifyReturnResultV2 = orderConnectService.postStatusModifyV2(model
+//							, connect_type, seller_id, requestModifyBody, sellerid_info, seller_token);
+//					
+//					if(ModifyReturnResultV2.getError_code()>0) {
+//						error_code = ModifyReturnResultV2.getError_code();
+//						error_val = ModifyReturnResultV2.getError_val();
+//					}
+//				}
 				if(rest_version.equals("3")==true) {// 현재 사용중  1, 2는 이전 어부앱 
 					
 					if(requestModifyBody.getModify_key()==1 && requestModifyBody.getModify_status() ==2 ) {
@@ -1573,11 +1537,6 @@ public class OrderController {
 	}
 	
 	/**
-	 * @method GET
-	 * @param type_val
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
 	 * @desc 각종 세팅값 
 	 */
 	@GetMapping(value="/setting/{version}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )
@@ -1687,11 +1646,11 @@ public class OrderController {
 		if(error_code == 0) {
 			
 			try {
-				if(rest_version.equals("1")==true) {
-					int sync_yn = 0;
-					sync_yn = orderConnectService.getSellerIdSync(model, connect_type, seller_id);
-					setDomain.setSellerid_sync(sync_yn);
-				}
+//				if(rest_version.equals("1")==true) {
+//					int sync_yn = 0;
+//					sync_yn = orderConnectService.getSellerIdSync(model, connect_type, seller_id);
+//					setDomain.setSellerid_sync(sync_yn);
+//				}
 				
 				// param 1 : user_info : 모임 데이터로 리턴함. 		
 				if(type_val==1) {
@@ -1734,14 +1693,14 @@ public class OrderController {
 					setDomain.setSellerId_info(return_val);
 					setDomain.setCourier_com_list(null);
 				
-				// param 2 : main cnt : rds 카운트 
+				// param 2 : main cnt
 				}else if(type_val==2) {
 					
 					SetDomain.MainMenuCount return_val = new SetDomain.MainMenuCount(); 
 					
-					if(rest_version.equals("1")==true) {
-						return_val = orderConnectService.getMainCntData(model, connect_type, seller_id);	
-					}
+//					if(rest_version.equals("1")==true) {
+//						return_val = orderConnectService.getMainCntData(model, connect_type, seller_id);	
+//					}
 					if(rest_version.equals("2")==true) {
 						return_val = orderConnectService.getMainCntDataV2(model, connect_type, seller_id);
 						setDomain.setSellerid_sync(null);
@@ -1764,10 +1723,10 @@ public class OrderController {
 					SetDomain.CourierComList courier_com_single = new SetDomain.CourierComList();
 					List<CourierComList> courier_com_list = new ArrayList<CourierComList>();
 					
-					if(rest_version.equals("1")==true) {
-						delivery_list = orderConnectService.SellerIdDeliveryContracts(model, connect_type
-								, seller_id, seller_token, sellerid_info);
-					}
+//					if(rest_version.equals("1")==true) {
+//						delivery_list = orderConnectService.SellerIdDeliveryContracts(model, connect_type
+//								, seller_id, seller_token, sellerid_info);
+//					}
 					if(rest_version.equals("2")==true) {
 						delivery_list = orderConnectService.SellerIdDeliveryContractsV2(model, connect_type
 								, seller_id, seller_token, sellerid_info);
@@ -1832,12 +1791,7 @@ public class OrderController {
 	
 	
 	/**
-	 * @method GET
-	 * @param type_val
-	 * @header X-Pado-REST-API-Key
-	 * @header X-Pado-Session-Token
-	 * 	@return Json{res_code, res_value, results[]}
-	 * @desc 각종 세팅값 
+	 * @desc 수동 데이터 동기화 사용
 	 */
 	@GetMapping(value="/data-sync/{datatype}/{version}", headers="Accept=application/json;charset=UTF-8", produces="application/json;charset=UTF-8" )
 	public @ResponseBody Json DatdSync(
