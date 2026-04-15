@@ -21,7 +21,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pience.padobox.config.DefaultConfig;
 import com.pience.padobox.model.*;
-//import com.pience.padobox.model.DefaultDomain.SellerCheck;
 import com.pience.padobox.model.SetDomain.CourierComList;
 import com.pience.padobox.model.SetDomain.ReturnModifyResultV2;
 import com.pience.padobox.service.AsyncStatusModifyService;
@@ -478,7 +477,6 @@ public class OrderController {
 		if(error_code==0) {
 			
 			try {
-				
 //				if(rest_version.equals("1")==true) {
 //					order_list = orderConnectService.getOrderListPossibleOrder(model, order_type, connect_type, seller_id, param_body);
 //				}
@@ -994,10 +992,6 @@ public class OrderController {
 		}
 		
 		//=================================================================
-		// check param 
-		
-
-		//=================================================================
 		// list 
 		if(error_code==0) {
 			try {
@@ -1298,7 +1292,6 @@ public class OrderController {
 		SetDomain.ControllerResultStatusModifyReturn ModifyReturnResult = new SetDomain.ControllerResultStatusModifyReturn();
 		SetDomain.ControllerResultStatusModifyReturnV2 ModifyReturnResultV2 = new SetDomain.ControllerResultStatusModifyReturnV2();
 		
-		
 		//=================================================================
 		// connect check
 		if(connect_type.equals("local")==true) {
@@ -1417,10 +1410,6 @@ public class OrderController {
 						}
 					
 					}else if(requestModifyBody.getModify_key()==1 && requestModifyBody.getModify_status() ==3) {
-						/// 프론트에서 30개 이상 여기로 옴. 3 
-						// modify_status 3은 전체 선택 비동기 처리
-						// 현재는 order_count와 관계없이 무조건 비동기로 처리
-						//=======================================
 						logger.info("StatusModify getModify_key:"+requestModifyBody.getModify_key()+": "+seller_id);
 						logger.info("StatusModify getModify_status:"+requestModifyBody.getModify_status()+": "+seller_id);
 						logger.info("StatusModify 1 : 3 : 전체 선택해서 조업가능 변경 시작 !! "+": "+seller_id);
@@ -1440,7 +1429,6 @@ public class OrderController {
 						
 						String request_id = batchStatusService.createBatch(seller_id);
 						
-						//async call start 
 				            asyncStatusModifyService.executeStatusModifyAsync(
 				                    request_id,
 				                    model,
@@ -1451,7 +1439,6 @@ public class OrderController {
 				                    seller_token
 				            );
 						
-						// 비동기 보내고 바로 결과라서 대용량 타입 Y 넣어서 보냄. 
 						ReturnModifyResultV2 v2_result = new ReturnModifyResultV2();
 						v2_result.setAll_process_yn("Y");
 						
@@ -1460,14 +1447,10 @@ public class OrderController {
 						ModifyReturnResultV2.setResult_return(v2_result);
 						
 					}else {
-						// 관망중 or 해제는 기존 v2 사용 
-						// "modify_key"  // 1 : 새로 들어온 주문, 2 : 가능, 3 : 관망중 리스트
-						// "modify_status" // 1 : 관망중, 11 : 관망중 취소
 						logger.info("StatusModify Observ v2 connect!!: "+seller_id);
 						ModifyReturnResultV2 = orderConnectService.postStatusModifyV2(model
 								, connect_type, seller_id, requestModifyBody, sellerid_info, seller_token);
 					}
-				
 					if(ModifyReturnResultV2.getError_code()>0) {
 						error_code = ModifyReturnResultV2.getError_code();
 						error_val = ModifyReturnResultV2.getError_val();
@@ -1475,7 +1458,6 @@ public class OrderController {
 						logger.info("StatusModify error_code:"+error_code);
 						logger.info("StatusModify error_val:"+error_val);
 					}
-					
 					if(defaultConfig.getConnectType().equals("dev")==true) {
 						error_code = 0;
 						error_val = "";	
@@ -1652,7 +1634,6 @@ public class OrderController {
 //					setDomain.setSellerid_sync(sync_yn);
 //				}
 				
-				// param 1 : user_info : 모임 데이터로 리턴함. 		
 				if(type_val==1) {
 					SetDomain.SellerIdInfo return_val = new SetDomain.SellerIdInfo();
 					SetDomain.SellerIdInfo.ContactInfo contact_information = new SetDomain.SellerIdInfo.ContactInfo();
@@ -1693,7 +1674,6 @@ public class OrderController {
 					setDomain.setSellerId_info(return_val);
 					setDomain.setCourier_com_list(null);
 				
-				// param 2 : main cnt
 				}else if(type_val==2) {
 					
 					SetDomain.MainMenuCount return_val = new SetDomain.MainMenuCount(); 
@@ -1716,7 +1696,6 @@ public class OrderController {
 					setDomain.setSellerId_info(null);
 					setDomain.setCourier_com_list(null);
 					
-				// param 3 : courier list : 모임 데이터로 결과값 
 				}else if(type_val==3) {
 				
 					SellerIdDeliveryDomain delivery_list = new SellerIdDeliveryDomain();
@@ -1788,7 +1767,6 @@ public class OrderController {
 		
 		return new Json(json_result); 
 	}
-	
 	
 	/**
 	 * @desc 수동 데이터 동기화 사용

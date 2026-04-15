@@ -24,7 +24,6 @@ public class AsyncStatusModifyService {
         this.batchStatusService = batchStatusService;
     }
 
-    
 	/**
 	 * @desc 가능 변경 대용량 비동기 처리 
 	 */

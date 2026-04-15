@@ -41,7 +41,7 @@ public class MoimApiService {
 	Gson gson = new Gson();
 
 	/**
-	 * @desc  
+	 * @desc  seller detail
 	 */
 	public SetDomain.StatusModifyReturn SellerIdCheck(String connect_type, String seller_id){
 		
@@ -103,7 +103,7 @@ public class MoimApiService {
 	
 
 	/**
-	 * @desc  
+	 * @desc ment total cnt  
 	 */
 	public SetDomain.MainMenuCount MainCntGet(String connect_type, String seller_id){
 		
@@ -212,7 +212,7 @@ public class MoimApiService {
 	
 
 	/**
-	 * @desc  
+	 * @desc  new list
 	 */
 	public int NewListCntGet(String connect_type, String seller_id){
 		
@@ -291,7 +291,7 @@ public class MoimApiService {
 	
 
 	/**
-	 * @desc  
+	 * @desc  order list 
 	 */
 	public String OrderListGet(String order_type, String connect_type, String seller_id, String after, Long gte, Long lte){
 		String return_val = "";
@@ -402,7 +402,7 @@ public class MoimApiService {
 	
 
 	/**
-	 * @desc  
+	 * @desc  data sync
 	 */
 	public String SyncIdDataGet(String connect_type, String seller_id, String after){
 		String return_val = "";
@@ -470,7 +470,7 @@ public class MoimApiService {
 	
 
 	/**
-	 * @desc  
+	 * @desc  order single 
 	 */
 	public String OrderSingleGet(String connect_type
 			, String seller_id , List<String> ids){
@@ -531,7 +531,7 @@ public class MoimApiService {
 	
 
 	/**
-	 * @desc  
+	 * @desc  seller delivery list
 	 */
 	public SellerIdDeliveryDomain SellerInfoDeliveryListGet(String connect_type, String seller_id){
 		SellerIdDeliveryDomain delivery_list = new SellerIdDeliveryDomain();
@@ -589,7 +589,7 @@ public class MoimApiService {
 	
 
 	/**
-	 * @desc  
+	 * @desc  order status preparing_for_delivery
 	 */
 	public SetDomain.StatusModifyReturn OrderStatusModifyPreparingFroDelivery(String connect_type
 			, String seller_id, List<String> ids){
@@ -665,7 +665,7 @@ public class MoimApiService {
 
 
 	/**
-	 * @desc  
+	 * @desc order delivery reception
 	 */
 	public SetDomain.StatusModifyReturn OrderDeliveryReception(String connect_type
 			, String seller_id, String deliveries_body){
@@ -749,7 +749,7 @@ public class MoimApiService {
 	
 
 	/**
-	 * @desc  
+	 * @desc  account list
 	 */
 	public SetDomain.StatusModifyReturn AccountsListGet(String connect_type, String seller_id, String account_body){
 		
@@ -824,9 +824,8 @@ public class MoimApiService {
 		
 	}
 	
-
 	/**
-	 * @desc  
+	 * @desc  account single
 	 */
 	public SetDomain.StatusModifyReturn AccountsSingleGet(String connect_type, String after
 			, String account_id){
@@ -897,7 +896,7 @@ public class MoimApiService {
 	}
 	
 	/**
-	 * @desc  
+	 * @desc kakao alarm talk   
 	 */
 	public String AlarmTalkPost(List<DefaultDomain.KakaoAlramTalkPostBody> post_body){
 		String return_val = "";
@@ -943,7 +942,7 @@ public class MoimApiService {
 	}
 	
 	/**
-	 * @desc  
+	 * @desc  seller list
 	 */
 	public SellerIdListDomain GetAllSellerIdList(String connect_type, String after){
 		

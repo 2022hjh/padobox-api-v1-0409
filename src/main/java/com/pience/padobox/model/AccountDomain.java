@@ -28,12 +28,10 @@ public class AccountDomain {
 		private String accounts_end_date;
 		private Integer accounts_total_price; 
 		private Integer accounts_status;
-		
 		private Integer supply_price;
         private Integer delivery_fee;
         private Integer extra_price;
         private Integer refunded_price;
-		
 		private List<ProductOptionSingle> product_list;
 		private List<ExcelProductSingle> excel_data;
 		
@@ -88,10 +86,8 @@ public class AccountDomain {
 	@Getter
 	@Setter
 	public static class MoimGetList{
-		
 		private List<ListDataSingle> data;
 		private TotalData total;
-		
 	}
 	
 	@Getter
@@ -109,15 +105,12 @@ public class AccountDomain {
 		private Integer extraPrice;
 		private  String status;
 		private Integer totalPrice;
-		
 		private Long completedAt;
-		
 	}
 	
 	@Getter
 	@Setter
 	public static class TotalData{
-		
 		private Integer count;
 		private Integer supplyPrice;
 		private Integer productPrice;
@@ -126,23 +119,19 @@ public class AccountDomain {
 		private Integer refundedPrice;
 		private Integer extraPrice;
 		private Integer totalPrice;
-		
 	}
 	
 	@Getter
 	@Setter
 	public static class MoimGetSingle{
-		
 		private List<DataSingle> data;
 		private SetTlement settlement;
 		private Pageing paging;
-		
 	}
 	
 	@Getter
 	@Setter
 	public static class SetTlement{
-		
 		private String id;
 		private String parentSellerId;
 		private String sellerId;
@@ -165,13 +154,11 @@ public class AccountDomain {
 		private Long createdAt;
 		private Long updatedAt;
 		private Integer totalPrice;
-		
 	}
 	
 	@Getter
 	@Setter
 	public static class DataSingle{
-		
 		private String id;
 		private String settlementId;
 		private String parentSellerId;
@@ -198,7 +185,6 @@ public class AccountDomain {
 		private String product_variant_name;
 		private Integer product_variant_total_price;
 		private String order_user_name;
-		
 	}
 	
 	@Getter
