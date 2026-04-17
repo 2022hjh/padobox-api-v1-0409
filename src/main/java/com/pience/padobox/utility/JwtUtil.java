@@ -29,9 +29,6 @@ public class JwtUtil {
 	    return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
 	}
 
-	/**
-	 * @desc   토큰 변환
-	 */
 	public String createToken(SellerCheck seller_check, String secret) {
 		Map<String, Object> claims = new HashMap<String, Object>();
 		claims.put("sellerId", seller_check.getSellerid());
@@ -52,9 +49,6 @@ public class JwtUtil {
         		.compact();
     }
 	
-	/**
-	 * @desc   토큰 역변
-	 */
 	public String paserToken(String token, String secret) {
 		logger.info("jwt createToken secret:"+secret);
 		String seller_id = "";

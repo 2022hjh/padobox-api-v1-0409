@@ -146,7 +146,6 @@ public class OrderConnectService {
 		
 		if(EmptyUtils.isEmpty(getAsyncLog)==false) {
 			if(getAsyncLog.size()>0) {
-				// limit 1로 바꿈
 				if(getAsyncLog.get(0).getProcess_status().equals("READY")==true) {
 					async_count = 1; // 진행중
 				}else {
@@ -164,7 +163,7 @@ public class OrderConnectService {
 		// ===========================================
 		
 		String after = "";
-		for(int i = 0; i < 100; i++) { // 50 * 100
+		for(int i = 0; i < 100; i++) {
 			String check = "";
 	  		check = moimApiService.OrderListGet(order_type, connect_type, seller_id, after, 0L, 0L);
 	  		logger.info("getOrderListNewOrderV2 > OrderListGet : check:"+check+"//"+seller_id);
@@ -192,7 +191,7 @@ public class OrderConnectService {
   				}
   				if(EmptyUtils.isEmpty(order_get_domain.getPaging().getAfter())==false) {
   					after = order_get_domain.getPaging().getAfter();
-  				}else {// after null
+  				}else {
   					logger.info("getOrderListNewOrderV2 333"+"//"+seller_id);
   					break;
   				}
@@ -212,7 +211,6 @@ public class OrderConnectService {
 			}
 			List<String> data_id_list = new ArrayList<String>();
 			try {
-				// RDS 관망중 체크
 				for(int j = 0; j < moim_get_data_list.size(); j++) {
 					data_id_list.add(moim_get_data_list.get(j).getId());
 				}
@@ -292,14 +290,6 @@ public class OrderConnectService {
 					  	  			OrderDomain.ProductVariantSingle pruduct_variant_single = new OrderDomain.ProductVariantSingle();
 					  	  			pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId()); 
 			  						pruduct_variant_single.setProduct_variant_id(moim_get_data_list.get(i2).getProductVariantId());
-			  						// 이렇게 가져오는 이유는 ko > 옵션 이라서 옵션은 domain > name 할 수 없음.   
-			  						/*
-										"productVariantValue":{
-										    "ko":{
-										       "옵션":"[밴댕이 회] 손질 후 200g"
-										    }
-										 }
-				  					*/
 			  						String var_val1 = "";
 			  						String[] var_val_array1 = null;
 			  						if(EmptyUtils.isEmpty(moim_get_data_list.get(i2).getProductVariantValue())==false) {
@@ -354,11 +344,11 @@ public class OrderConnectService {
 		
 		//==========================================================
 		// 주문 리스트 : 택배접수 리스트 : 20260306 
-//		- 배송 접수 대기 페이지 
-//		- 목적 : preparingForDelivery 배달준비중 --> 배송 접수 진행중 paid 다음 단계 
-//		- 구매자한테 알림톡 발송(모임시스템)후 택배사 송장번호 지정이 되는 순간 waitingToBePickedUp 상태값은 가능 리스트로 변경됨. 
-//		- 별도 리스트 이유 : 기존에는 신규 리스트에 있었는데 어장에서 가능변경했는데 왜 신규에 있냐고 해서 별도 리스트 추가됨. 
-//		- 신규에 없애려고 waitingToBePickedUp (모임에서 변경) 진행이 되었으나 구매자 알림톡이 안가서 별도 리스트 추가됨. 
+		//		- 배송 접수 대기 페이지 
+		//		- 목적 : preparingForDelivery 배달준비중 --> 배송 접수 진행중 paid 다음 단계 
+		//		- 구매자한테 알림톡 발송(모임시스템)후 택배사 송장번호 지정이 되는 순간 waitingToBePickedUp 상태값은 가능 리스트로 변경됨. 
+		//		- 별도 리스트 이유 : 기존에는 신규 리스트에 있었는데 어장에서 가능변경했는데 왜 신규에 있냐고 해서 별도 리스트 추가됨. 
+		//		- 신규에 없애려고 waitingToBePickedUp (모임에서 변경) 진행이 되었으나 구매자 알림톡이 안가서 별도 리스트 추가됨. 
 		//==========================================================
 		int error_code = 0;
 		String error_val = "";
@@ -479,7 +469,7 @@ public class OrderConnectService {
 			  	  						&& moim_get_data_list.get(j).getProductId().equals(moim_get_data_list.get(i2).getProductId())==true 
 			  	  						) {
 					  	  			OrderDomain.ProductVariantSingle pruduct_variant_single = new OrderDomain.ProductVariantSingle();
-					  	  			pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId()); //CI:
+					  	  			pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId());
 			  						pruduct_variant_single.setProduct_variant_id(moim_get_data_list.get(i2).getProductVariantId());
 			  						String var_val1 = "";
 			  						String[] var_val_array1 = null;
@@ -712,7 +702,7 @@ public class OrderConnectService {
 			  	  					addedCiIds.add(ciId);
 			  	  					
 			  	  					OrderDomain.ProductVariantSingle pruduct_variant_single = new OrderDomain.ProductVariantSingle();
-				  	  				pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId()); //CI:
+				  	  				pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId()); 
 			  						pruduct_variant_single.setProduct_variant_id(moim_get_data_list.get(i2).getProductVariantId());
 			  						String var_val1 = "";
 			  						String[] var_val_array1 = null;
@@ -880,7 +870,7 @@ public class OrderConnectService {
 			  	  					addedCiIds.add(ciId);
 			  	  					
 					  	  			OrderDomain.ProductVariantSingle pruduct_variant_single = new OrderDomain.ProductVariantSingle();
-					  	  			pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId()); //CI:
+					  	  			pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId()); 
 			  						pruduct_variant_single.setProduct_variant_id(moim_get_data_list.get(i2).getProductVariantId());
 			  					
 			  						String var_val1 = "";
@@ -1047,7 +1037,7 @@ public class OrderConnectService {
 		  	  						&& moim_get_data_list.get(j).getProductId().equals(moim_get_data_list.get(i2).getProductId())==true 
 		  	  						) {
 		  	  					OrderDomain.ProductVariantSingle pruduct_variant_single = new OrderDomain.ProductVariantSingle();
-				  	  			pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId()); //CI:
+				  	  			pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId()); 
 		  						pruduct_variant_single.setProduct_variant_id(moim_get_data_list.get(i2).getProductVariantId());
 		  						String var_val1 = "";
 		  						String[] var_val_array1 = null;
@@ -1206,7 +1196,7 @@ public class OrderConnectService {
 		  	  						&& moim_get_data_list.get(j).getProductId().equals(moim_get_data_list.get(i2).getProductId())==true 
 		  	  						) {
 		  	  					OrderDomain.ProductVariantSingle pruduct_variant_single = new OrderDomain.ProductVariantSingle();
-				  	  			pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId()); //CI:
+				  	  			pruduct_variant_single.setProduct_variant_key(moim_get_data_list.get(i2).getId()); 
 		  						pruduct_variant_single.setProduct_variant_id(moim_get_data_list.get(i2).getProductVariantId());
 		  						String var_val1 = "";
 		  						String[] var_val_array1 = null;
@@ -1447,7 +1437,7 @@ public class OrderConnectService {
 									  		  						account_moim_get_single_sublist.getData().get(i).setProduct_variant_name(var_val1);
 									  		  						account_moim_get_single_sublist.getData().get(i).setProduct_variant_total_price(account_moim_get_single_sublist.getData().get(i).getTotalPrice());
 									  		  						account_moim_get_single_sublist.getData().get(i).setOrder_user_name(order_moim_get_domain.getData().get(i2).getPurchase().getBuyerName());
-																}else {//deduction
+																}else {
 																	if(EmptyUtils.isEmpty(account_moim_get_single_sublist.getData().get(i).getDescription())==false){
 																		account_moim_get_single_sublist.getData().get(i).setSettlement(account_moim_get_single_sublist.getSettlement());
 																		account_moim_get_single_sublist.getData().get(i).setProduct_name(account_moim_get_single_sublist.getData().get(i).getDescription());	
@@ -1934,8 +1924,8 @@ public class OrderConnectService {
 		int error_code = 0;
 		String error_val = "";
 		ReturnModifyResultV2 modify_result = new ReturnModifyResultV2();
-		String status_modify_log = "";// log 저장용
-		String delivery_reception_log = "";// log 저장용
+		String status_modify_log = "";
+		String delivery_reception_log = "";
 		logger.info("postStatusModifyV3All : "+request_id+": now:"+LocationTimeCal.GetNowDateTime()+"//"+seller_id);
 		String now_date_time_start = LocationTimeCal.GetNowDateTime();
 		status_modify_log = "//now_date_time_start:"+now_date_time_start+"//[";
@@ -1949,8 +1939,8 @@ public class OrderConnectService {
 			    List<OrderDomain.ReturnDatav1> failure_result_list = new ArrayList<>();
 			    List<OrderDomain.ReturnDatav1> unavailable_result_list = new ArrayList<>();
 				List<productVarinatSingle> moim_get_data_list = new ArrayList<productVarinatSingle>();
-				List<String> purchase_send_ids = new ArrayList<String>(); //  paid ids
-				List<String> status_put_send_cu_ids = new ArrayList<String>(); //  preparingForDelivery 상태변경 보내는 CU:00000
+				List<String> purchase_send_ids = new ArrayList<String>(); 
+				List<String> status_put_send_cu_ids = new ArrayList<String>();
 				int order_new_cnt = 0;
 				StatusModifyResultReturnDelivery delivery_reception_result_domain = new StatusModifyResultReturnDelivery();
 				List<GroupedModifyBody> grouprequestModifyBody = new ArrayList<GroupedModifyBody>();
@@ -2370,7 +2360,7 @@ public class OrderConnectService {
 	
 
 	/**
-	 * @desc  // 모든 주문안에 CI: data_id로 넘어온 주문만 상태변경, 배송접수 처리 로직
+	 * @desc  모든 주문안에 CI: data_id로 넘어온 주문만 상태변경, 배송접수 처리 로직
 	 */
 	public SetDomain.ControllerResultStatusModifyReturnV2 postStatusModifyV3(Model model
 			, String connect_type, String seller_id
@@ -2387,7 +2377,6 @@ public class OrderConnectService {
 		status_modify_log = "//now_date_time_start:"+now_date_time_start+"//[";
 		delivery_reception_log = "//now_date_time_start:"+now_date_time_start+"//["; 
 		
-		// body check
 		if(requestModifyBody.getModify_key()>0 && requestModifyBody.getModify_status()>0
 				&& requestModifyBody.getData().size()>0 && error_code ==0) {
 			
@@ -2942,13 +2931,6 @@ public class OrderConnectService {
 		int error_code = 0;
 		String error_val = "";
 		
-//		ReturnModifyResultV2 modify_result = new ReturnModifyResultV2();
-//		
-//		String status_modify_log = "";
-//		String delivery_reception_log = "";
-//		status_modify_log = "[";
-//		delivery_reception_log = "["; 
-		
 		if(requestModifyBody.getModify_key()>0 && requestModifyBody.getModify_status()>0
 				&& requestModifyBody.getData().size()>0 && error_code ==0) {
 			
@@ -3108,7 +3090,6 @@ public class OrderConnectService {
 		
 		if(EmptyUtils.isEmpty(getAsyncLog)==false) {
 			if(getAsyncLog.size()>0) {
-				// limit 1로 바꿈
 				if(getAsyncLog.get(0).getProcess_status().equals("READY")==true) {
 					return_val.setAsync_count(1);
 				}else {
@@ -3276,7 +3257,7 @@ public class OrderConnectService {
 
 					five_ids_list = new ArrayList<String>();
 					last_num = num;
-				}else if(distinct_list.size()-last_num < 6) {// 5개 이하 id들
+				}else if(distinct_list.size()-last_num < 6) {
 					if(distinct_list.size() == num) {
 						String json_val = "";
 						json_val = gson.toJson(five_ids_list);
@@ -3370,7 +3351,7 @@ public class OrderConnectService {
 				model_ins.addAttribute("status", order_get_domain.getData().get(i).getStatus());						
 				model_ins.addAttribute("createdAt", order_get_domain.getData().get(i).getCreatedAt());
 				model_ins.addAttribute("updatedAt", order_get_domain.getData().get(i).getUpdatedAt());
-				model_ins.addAttribute("refundedAt", order_get_domain.getData().get(i).getRefundedAt());// 환불
+				model_ins.addAttribute("refundedAt", order_get_domain.getData().get(i).getRefundedAt());
 				model_ins.addAttribute("paidAt", order_get_domain.getData().get(i).getPaidAt());
 				model_ins.addAttribute("object_json", gson.toJson(order_get_domain.getData().get(i)).toString());
 				
@@ -3406,36 +3387,31 @@ public class OrderConnectService {
 					int order_status = 0;
 					if(order_get_domain.getData().get(i).getStatus().equals("paid")==true 
 							|| order_get_domain.getData().get(i).getStatus().equals("preparingForDelivery")==true) {
-						
 						//requested
 						order_status= 0; // 주문
-						
 					}else if(order_get_domain.getData().get(i).getStatus().equals("waitingToBePickedUp")==true 
 							|| order_get_domain.getData().get(i).getStatus().equals("waitingForDeliveryReception")==true
 							|| order_get_domain.getData().get(i).getStatus().equals("deliveryReceptionFailed")==true
 							) {
 						//processing
 						order_status= 1; // 가능
-					
 					}else if(order_get_domain.getData().get(i).getStatus().equals("inTransit")==true 
 							|| order_get_domain.getData().get(i).getStatus().equals("deliveryCompleted")==true
 							|| order_get_domain.getData().get(i).getStatus().equals("purchaseCompleted")==true
 							) {
 						//delivered
 						order_status= 2; // 발송
-						
 					}else if(order_get_domain.getData().get(i).getStatus().equals("refunded")==true 
 							|| order_get_domain.getData().get(i).getStatus().equals("cancelled")==true
 							) {
 						//cancelled
 						order_status= 3; // 취소
-						
 					}else {
 						order_status= 4; // 그 외
 					}
 					
 					plugin_order_list_domain.setOrder_status(order_status);
-					plugin_order_list_domain.setOrder_sub_status(0);// 초기 insert에서만 필요: 관망중
+					plugin_order_list_domain.setOrder_sub_status(0);
 					plugin_order_list_domain.setMoim_status(order_get_domain.getData().get(i).getStatus());
 					plugin_order_list_domain.setUser_id(order_get_domain.getData().get(i).getUserId());;
 					plugin_order_list_domain.setBuyer_name(order_get_domain.getData().get(i).getPurchase().getBuyerName());
@@ -3536,7 +3512,7 @@ public class OrderConnectService {
 						}
 					}
 				}
-			}// for  
+			}  
 		}else {
 			error_status.setError_code(121);
 			error_status.setError_val(" getData() empty!! ");
@@ -4048,7 +4024,7 @@ public class OrderConnectService {
 				String order_key = "";
 				
 				if(EmptyUtils.isEmpty(requestModifyBody.getData().get(i).getOrder_key())==false) {
-					order_key = requestModifyBody.getData().get(i).getOrder_key();// CY:00000000000 로 바뀜
+					order_key = requestModifyBody.getData().get(i).getOrder_key();
 					logger.info("Observ order_key:"+order_key+"//"+seller_id);
 					for(int j = 0; j < requestModifyBody.getData().get(i).getProduct_variant_key().size(); j++) {
 						ids_moim_send.add(requestModifyBody.getData().get(i).getProduct_variant_key().get(j));
@@ -4136,7 +4112,7 @@ public class OrderConnectService {
 				String order_key = "";
 				
 				if(EmptyUtils.isEmpty(requestModifyBody.getData().get(i).getOrder_key())==false) {
-					order_key = requestModifyBody.getData().get(i).getOrder_key();// CY:00000000000 로 바뀜
+					order_key = requestModifyBody.getData().get(i).getOrder_key();
 					logger.info("Observ order_key:"+order_key+"//"+seller_id);
 					for(int j = 0; j < requestModifyBody.getData().get(i).getProduct_variant_key().size(); j++) {
 						ids_moim_send.add(requestModifyBody.getData().get(i).getProduct_variant_key().get(j));
@@ -4144,7 +4120,6 @@ public class OrderConnectService {
 					try {
 						get_order_single = moimApiService.OrderSingleGet(connect_type, seller_id, ids_moim_send);
 						logger.info("Observ get_order_single:"+get_order_single+"//"+seller_id);
-						// 위 옵션ID만 가져옴. 
 						order_moim_get_domain = gson.fromJson(get_order_single, order_moim_get_domain.getClass());
 						if(EmptyUtils.isEmpty(order_moim_get_domain)==false) {
 							if(EmptyUtils.isEmpty(order_moim_get_domain.getData())==false) {
@@ -4244,7 +4219,7 @@ public class OrderConnectService {
 	 */
 	public void sendMail(String request_id, String seller_id, String seller_name, String error_val) {
 		final String username = defaultConfig.getFailSendGmailAddr();
-		final String password = defaultConfig.getFailSendGmailPw(); // 앱 비밀번호
+		final String password = defaultConfig.getFailSendGmailPw();
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
 		prop.put("mail.smtp.port", "587");

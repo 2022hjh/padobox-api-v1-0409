@@ -9,7 +9,7 @@ public class DuplicateUtil {
 	
     public static List<String> findDuplicates(List<String> list1, List<String> list2) {
         List<String> duplicates = new ArrayList<>();
-        Set<String> set1 = new HashSet<>(list1); // 중복 제거를 위해 Set 사용
+        Set<String> set1 = new HashSet<>(list1); 
 
         for (String element : list2) {
             if (set1.contains(element)) {
