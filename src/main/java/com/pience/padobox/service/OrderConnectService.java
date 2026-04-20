@@ -3680,7 +3680,7 @@ public class OrderConnectService {
 				alarn_talk_send_result = "failure";
 			}
 			
-			logger.info("AlarmTalkSeller DefaultConfig.kakao_patner_send_yn:"+defaultConfig.getKakaoPatnerSendYn());
+			logger.info("AlarmTalkSeller DefaultConfig.kakao_partner_send_yn:"+defaultConfig.getKakaoPatnerSendYn());
 				if(defaultConfig.getKakaoPatnerSendYn().equals("on")==true) {
 					
 					List<AlarmTalkPartnerDomain.Data> getSingleData = new ArrayList<AlarmTalkPartnerDomain.Data>();

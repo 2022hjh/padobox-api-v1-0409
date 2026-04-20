@@ -10,9 +10,9 @@
     "description": "A description for 'padobox.kakao_send_yn'"
   },
   {
-    "name": "padobox.kakao_patner_send_yn",
+    "name": "padobox.kakao_partner_send_yn",
     "type": "java.lang.String",
-    "description": "A description for 'padobox.kakao_patner_send_yn'"
+    "description": "A description for 'padobox.kakao_partner_send_yn'"
   },
   {
     "name": "padobox.rest_version",
