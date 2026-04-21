@@ -13,7 +13,7 @@ public class DefaultConfig {
 
     private String connectType;
     private String kakaoSendYn;
-    private String kakaoPatnerSendYn;
+    private String kakaoPartnerSendYn;
     private String restVersion;
     private String headerRestApi;
     private String headerSessionTokenDev;

@@ -3680,8 +3680,8 @@ public class OrderConnectService {
 				alarn_talk_send_result = "failure";
 			}
 			
-			logger.info("AlarmTalkSeller DefaultConfig.kakao_partner_send_yn:"+defaultConfig.getKakaoPatnerSendYn());
-				if(defaultConfig.getKakaoPatnerSendYn().equals("on")==true) {
+			logger.info("AlarmTalkSeller DefaultConfig.kakao_partner_send_yn:"+defaultConfig.getKakaoPartnerSendYn());
+				if(defaultConfig.getKakaoPartnerSendYn().equals("on")==true) {
 					
 					List<AlarmTalkPartnerDomain.Data> getSingleData = new ArrayList<AlarmTalkPartnerDomain.Data>();
 					Model model_get_1 = new ExtendedModelMap();
